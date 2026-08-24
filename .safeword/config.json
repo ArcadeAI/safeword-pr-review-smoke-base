@@ -1,0 +1,9 @@
+{
+  "prReview": {
+    "enabled": true,
+    "provider": "openai",
+    "model": "gpt-5.2",
+    "maxTotalBytes": 100000,
+    "requiredChecks": []
+  }
+}

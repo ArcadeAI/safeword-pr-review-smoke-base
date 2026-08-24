@@ -1,0 +1,22 @@
+name: Safeword advisory PR review smoke sweep
+on:
+  workflow_dispatch:
+    inputs:
+      pull_number:
+        description: Disposable fixture pull request
+        required: true
+        type: string
+permissions: {}
+jobs:
+  scheduled-review:
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    uses: ./.github/workflows/safeword-pr-review-worker.yml
+    secrets: inherit
+    with:
+      pull_number: ${{ fromJSON(inputs.pull_number) }}
+      cancel_in_progress: false
+      inspect_requested: true
+      write_requested: true
